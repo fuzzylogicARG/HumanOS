@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Human Operating System — Month 1: ORIGIN</title>
   <meta name="description" content="Human Operating System — Month 1: ORIGIN. A structured 30-day digital PDF system for self-awareness, behavior change, and intentional action." />
-  <link rel="stylesheet" href="/styles.css?v=10" >
+  <link rel="stylesheet" href="/styles.css?v=11" >
 </head>
 <body>
   <nav class="nav">
@@ -53,12 +53,12 @@
         <article class="price-card">
           <span class="plan-label">BASIC</span><h3>ORIGIN — Basic</h3><div class="price">$30</div><p class="price-desc">The complete Month 1 self-system PDF.</p>
           <ul class="check-list compact"><li>30-day plan</li><li>Daily actions</li><li>Weekly reviews</li><li>Reflection page</li></ul>
-          <div class="pay-buttons"><a class="btn btn-gold" href="STRIPE_BASIC_LINK">Pay with Stripe</a><a class="btn btn-dark" href="PAYPAL_BASIC_LINK">Pay with PayPal</a></div>
+          <div class="pay-buttons"><a class="btn btn-gold" href="#" onclick="return handleCheckout('stripe_basic')">Pay with Stripe</a><a class="btn btn-dark" href="#" onclick="return handleCheckout('paypal_basic')">Pay with PayPal</a></div>
         </article>
         <article class="price-card premium">
           <span class="plan-label">PREMIUM</span><h3>ORIGIN — Premium</h3><div class="price">$60</div><p class="price-desc">Expanded system with premium worksheets and community bonus.</p>
           <ul class="check-list compact"><li>Everything in Basic</li><li>Advanced prompts</li><li>Behavior tracking tools</li><li>Private community bonus</li></ul>
-          <div class="pay-buttons"><a class="btn btn-cyber" href="STRIPE_PREMIUM_LINK">Pay with Stripe</a><a class="btn btn-dark" href="PAYPAL_PREMIUM_LINK">Pay with PayPal</a></div>
+          <div class="pay-buttons"><a class="btn btn-cyber" href="#" onclick="return handleCheckout('stripe_premium')">Pay with Stripe</a><a class="btn btn-dark" href="#" onclick="return handleCheckout('paypal_premium')">Pay with PayPal</a></div>
         </article>
       </div>
       <p class="small-note">After payment, access is delivered manually. Please keep your payment confirmation.</p>
@@ -118,13 +118,67 @@
   <footer class="footer-pro">
     <div class="wrap footer-legal">
       <div class="footer-links">
-        <a href="#">Terms & Conditions</a>
-        <a href="#">Privacy Policy</a>
+        <a href="/terms.html">Terms & Conditions</a>
+        <a href="/privacy.html">Privacy Policy</a>
         <a href="mailto:humanosystem@proton.me">Contact</a>
       </div>
       <div class="footer-copy">© 2026 Human Operating System. All rights reserved.</div>
       <div class="footer-note">Digital PDF systems for self-upgrade.</div>
     </div>
   </footer>
+
+  <script>
+    const CHECKOUT_LINKS = {
+      stripe_basic: "#",
+      paypal_basic: "#",
+      stripe_premium: "#",
+      paypal_premium: "#"
+    };
+
+    function handleCheckout(type) {
+      const link = CHECKOUT_LINKS[type];
+
+      if (!link || link === "#") {
+        showCheckoutToast("Secure checkout is being finalized. Please check back shortly.");
+        return false;
+      }
+
+      showCheckoutLoader();
+      setTimeout(function () {
+        window.location.href = link;
+      }, 700);
+
+      return false;
+    }
+
+    function showCheckoutLoader() {
+      const existing = document.getElementById("checkoutLoader");
+      if (existing) existing.remove();
+
+      const loader = document.createElement("div");
+      loader.id = "checkoutLoader";
+      loader.className = "checkout-loader";
+      loader.innerHTML = '<div class="checkout-loader-box"><div class="checkout-loader-title">Redirecting to secure checkout</div><div class="checkout-loader-sub">Please wait...</div></div>';
+      document.body.appendChild(loader);
+    }
+
+    function showCheckoutToast(message) {
+      const existing = document.querySelector(".checkout-toast");
+      if (existing) existing.remove();
+
+      const toast = document.createElement("div");
+      toast.className = "checkout-toast";
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(function () { toast.classList.add("show"); }, 10);
+
+      setTimeout(function () {
+        toast.classList.remove("show");
+        setTimeout(function () { toast.remove(); }, 250);
+      }, 3300);
+    }
+  </script>
+
 </body>
 </html>
