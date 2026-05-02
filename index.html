@@ -47,22 +47,72 @@
       </div>
     </section>
 
-    <section id="pricing" class="section wrap">
-      <div class="section-head"><h2>Choose Your Version</h2><p>Basic includes the complete Month 1 PDF. Premium adds deeper prompts, worksheets, tracking systems, and bonus community access.</p></div>
-      <div class="pricing-grid">
-        <article class="price-card">
-          <span class="plan-label">BASIC</span><h3>ORIGIN — Basic</h3><div class="price">$30</div><p class="price-desc">The complete Month 1 self-system PDF.</p>
-          <ul class="check-list compact"><li>30-day plan</li><li>Daily actions</li><li>Weekly reviews</li><li>Reflection page</li></ul>
-          <div class="pay-buttons"><a class="btn btn-gold" href="#" onclick="return handleCheckout('stripe_basic')">Pay with Stripe</a><a class="btn btn-dark" href="#" onclick="return handleCheckout('paypal_basic')">Pay with PayPal</a></div>
-        </article>
-        <article class="price-card premium">
-          <span class="plan-label">PREMIUM</span><h3>ORIGIN — Premium</h3><div class="price">$60</div><p class="price-desc">Expanded system with premium worksheets and community bonus.</p>
-          <ul class="check-list compact"><li>Everything in Basic</li><li>Advanced prompts</li><li>Behavior tracking tools</li><li>Private community bonus</li></ul>
-          <div class="pay-buttons"><a class="btn btn-cyber" href="#" onclick="return handleCheckout('stripe_premium')">Pay with Stripe</a><a class="btn btn-dark" href="#" onclick="return handleCheckout('paypal_premium')">Pay with PayPal</a></div>
-        </article>
+  <section id="pricing" class="section wrap">
+  <div class="section-head">
+    <h2>Choose Your Version</h2>
+    <p>Start with Entry Point, upgrade to Basic, or unlock the full Premium system.</p>
+  </div>
+
+  <div class="pricing-grid">
+
+    <article class="price-card">
+      <span class="plan-label">ENTRY POINT</span>
+      <h3>ORIGIN — Entry</h3>
+      <div class="price">$19.99</div>
+      <p class="price-desc">A focused entry into the Human Operating System.</p>
+      <ul class="check-list compact">
+        <li>Introduction to the system</li>
+        <li>Core principles overview</li>
+        <li>Essential frameworks</li>
+        <li>Access from any device</li>
+      </ul>
+      <div class="pay-buttons">
+        <a class="btn btn-gold" href="#" onclick="return handleCheckout('square_entry')">Pay with Square</a>
+        <a class="btn btn-dark" href="#" onclick="return handleCheckout('stripe_entry')">Pay with Stripe</a>
+        <a class="btn btn-dark" href="#" onclick="return handleCheckout('paypal_entry')">Pay with PayPal</a>
       </div>
-      <p class="small-note">After payment, access is delivered manually. Please keep your payment confirmation.</p>
-    </section>
+    </article>
+
+    <article class="price-card">
+      <span class="plan-label">BASIC</span>
+      <h3>ORIGIN — Basic</h3>
+      <div class="price">$30</div>
+      <p class="price-desc">The complete Month 1 self-system PDF.</p>
+      <ul class="check-list compact">
+        <li>30-day plan</li>
+        <li>Daily actions</li>
+        <li>Weekly reviews</li>
+        <li>Reflection page</li>
+      </ul>
+      <div class="pay-buttons">
+        <a class="btn btn-gold" href="#" onclick="return handleCheckout('square_basic')">Pay with Square</a>
+        <a class="btn btn-dark" href="#" onclick="return handleCheckout('stripe_basic')">Pay with Stripe</a>
+        <a class="btn btn-dark" href="#" onclick="return handleCheckout('paypal_basic')">Pay with PayPal</a>
+      </div>
+    </article>
+
+    <article class="price-card premium">
+      <span class="plan-label">PREMIUM</span>
+      <h3>ORIGIN — Premium</h3>
+      <div class="price">$60</div>
+      <p class="price-desc">Expanded system with premium worksheets and community bonus.</p>
+      <ul class="check-list compact">
+        <li>Everything in Basic</li>
+        <li>Advanced prompts</li>
+        <li>Behavior tracking tools</li>
+        <li>Private community bonus</li>
+      </ul>
+      <div class="pay-buttons">
+        <a class="btn btn-cyber" href="#" onclick="return handleCheckout('square_premium')">Pay with Square</a>
+        <a class="btn btn-dark" href="#" onclick="return handleCheckout('stripe_premium')">Pay with Stripe</a>
+        <a class="btn btn-dark" href="#" onclick="return handleCheckout('paypal_premium')">Pay with PayPal</a>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="small-note">Payments are processed through secure official checkout pages. After payment, access is delivered manually. Please keep your payment confirmation.</p>
+</section>
 
     <section id="how" class="section wrap">
       <div class="section-head"><h2>How It Works</h2><p>Simple flow. No accounts. No dashboards. Buy, confirm, download, execute.</p></div>
