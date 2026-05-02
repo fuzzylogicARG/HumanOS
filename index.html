@@ -2,133 +2,555 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Human Operating System — Pricing</title>
+  <meta name="description" content="Choose your Human Operating System access level: Entry Point, Basic, or Premium. Secure checkout with Square, Stripe, and PayPal." />
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hosDark: '#07070a',
+            hosCard: '#111118',
+            hosSoft: '#181824',
+            hosGold: '#facc15',
+            hosRed: '#ef4444',
+            hosGreen: '#22c55e',
+            hosBlue: '#38bdf8',
+            hosPurple: '#a855f7'
+          }
+        }
+      }
+    };
+  </script>
 
   <style>
-    body { background:#07070a; }
-    .checkout-loader {
-      position:fixed; inset:0; z-index:99999;
-      background:rgba(0,0,0,.7);
-      display:flex; align-items:center; justify-content:center;
+    html { scroll-behavior: smooth; }
+    body { background: #07070a; }
+    .glass {
+      background: rgba(17, 17, 24, 0.88);
+      backdrop-filter: blur(16px);
     }
-    .checkout-box {
-      background:#111118;
-      border:1px solid #333;
-      padding:30px;
-      border-radius:20px;
-      text-align:center;
-      color:white;
+    .price-card {
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .price-card:hover {
+      transform: translateY(-5px);
+    }
+    .checkout-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0,0,0,.72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    .checkout-loader-box {
+      max-width: 420px;
+      width: calc(100% - 32px);
+      border: 1px solid rgba(250,204,21,.35);
+      background: linear-gradient(180deg, rgba(17,17,24,.98), rgba(7,7,10,.98));
+      border-radius: 26px;
+      padding: 32px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(250,204,21,.12);
+    }
+    .checkout-loader-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: white;
+    }
+    .checkout-loader-sub {
+      margin-top: 8px;
+      color: rgba(255,255,255,.62);
+      font-size: 14px;
+    }
+    .checkout-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%) translateY(24px);
+      opacity: 0;
+      z-index: 999999;
+      background: rgba(17,17,24,.96);
+      border: 1px solid rgba(255,255,255,.16);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 16px;
+      max-width: calc(100% - 32px);
+      box-shadow: 0 18px 45px rgba(0,0,0,.45);
+      transition: all .25s ease;
+      text-align: center;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .checkout-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
   </style>
 </head>
 
-<body class="text-white">
+<body class="bg-hosDark text-white antialiased">
 
-<!-- NAV -->
-<nav class="p-4 flex justify-between max-w-6xl mx-auto">
-  <div class="font-bold text-xl">HOS</div>
-  <a href="#plans" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold">
-    Start
-  </a>
-</nav>
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-hosDark/90 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center gap-3 font-black">
+        <span class="inline-flex w-11 h-11 rounded-2xl bg-white text-black items-center justify-center tracking-tight">HOS</span>
+        <span class="hidden sm:block">Human Operating System</span>
+      </a>
 
-<!-- HERO -->
-<section class="text-center py-20 max-w-4xl mx-auto">
-  <h1 class="text-5xl font-bold">Upgrade Your System</h1>
-  <p class="mt-4 text-gray-400">
-    30-day system to rebuild discipline and focus
-  </p>
-</section>
+      <div class="hidden md:flex items-center gap-6 text-sm font-bold text-white/60">
+        <a href="#plans" class="hover:text-white">Plans</a>
+        <a href="#how" class="hover:text-white">How It Works</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+      </div>
 
-<!-- PLANS -->
-<section id="plans" class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 px-4">
+      <a href="#plans" class="px-5 py-3 rounded-2xl bg-hosGold text-black font-black text-sm hover:bg-yellow-300">
+        Start Month 1
+      </a>
+    </div>
+  </nav>
 
-  <!-- ENTRY -->
-  <div class="bg-[#111118] p-6 rounded-xl">
-    <h3 class="text-xl font-bold">Entry</h3>
-    <div class="text-4xl mt-4">$19.99</div>
+  <!-- HERO -->
+  <section class="relative overflow-hidden border-b border-white/10">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(239,68,68,.28),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(250,204,21,.16),transparent_35%),radial-gradient(circle_at_center,rgba(56,189,248,.08),transparent_46%)]"></div>
 
-    <button onclick="checkout('stripe_entry')" class="mt-6 w-full bg-green-400 text-black py-3 rounded-xl font-bold">
-      Pay with Card
-    </button>
+    <div class="relative max-w-7xl mx-auto px-4 py-16 md:py-24 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-600/20 border border-red-500/40 text-red-200 text-sm font-black mb-6">
+        MONTH 1: ORIGIN — SELF SYSTEM
+      </div>
 
-    <button onclick="checkout('paypal_entry')" class="mt-3 w-full bg-blue-400 text-black py-3 rounded-xl font-bold">
-      PayPal
-    </button>
+      <h1 class="text-4xl md:text-7xl font-black tracking-tight leading-tight">
+        This Isn’t Motivation.<br class="hidden md:block" />
+        <span class="text-hosGold">This Is A System Upgrade.</span>
+      </h1>
 
-    <button onclick="checkout('square_entry')" class="mt-3 w-full bg-gray-300 text-black py-3 rounded-xl font-bold">
-      Square
-    </button>
-  </div>
+      <p class="mt-6 text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
+        A structured 30-day digital system designed to reveal your patterns, interrupt automatic behavior, and rebuild your daily execution with intention.
+      </p>
 
-  <!-- BASIC -->
-  <div class="bg-[#111118] p-6 rounded-xl border border-yellow-400">
-    <h3 class="text-xl font-bold">Basic</h3>
-    <div class="text-4xl mt-4">$30</div>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#plans" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-hosGreen hover:bg-green-400 text-black font-black text-lg shadow-lg shadow-green-500/20">
+          Start for $19.99
+        </a>
+        <a href="#how" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-lg">
+          How It Works
+        </a>
+      </div>
 
-    <button onclick="checkout('stripe_basic')" class="mt-6 w-full bg-green-400 text-black py-3 rounded-xl font-bold">
-      Pay with Card
-    </button>
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto text-sm font-bold text-white/70">
+        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">30-Day PDF System</div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Secure Checkout</div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Fast Manual Delivery</div>
+      </div>
+    </div>
+  </section>
 
-    <button onclick="checkout('paypal_basic')" class="mt-3 w-full bg-blue-400 text-black py-3 rounded-xl font-bold">
-      PayPal
-    </button>
+  <!-- PAYMENT TOGGLE -->
+  <section id="plans" class="sticky top-[73px] z-40 bg-hosDark/95 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-black">Choose Your Access Level</h2>
+          <p class="text-sm text-white/60">Select a plan, then choose your secure payment method.</p>
+        </div>
 
-    <button onclick="checkout('square_basic')" class="mt-3 w-full bg-gray-300 text-black py-3 rounded-xl font-bold">
-      Square
-    </button>
-  </div>
+        <div class="p-1 bg-white/10 rounded-2xl border border-white/10 grid grid-cols-3 w-full md:w-auto">
+          <button id="stripeBtn" class="payment-toggle px-4 md:px-5 py-3 rounded-xl text-sm font-black bg-white text-black" data-method="stripe">
+            Card / Stripe
+          </button>
+          <button id="paypalBtn" class="payment-toggle px-4 md:px-5 py-3 rounded-xl text-sm font-black text-white/70" data-method="paypal">
+            PayPal
+          </button>
+          <button id="squareBtn" class="payment-toggle px-4 md:px-5 py-3 rounded-xl text-sm font-black text-white/70" data-method="square">
+            Square
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- PREMIUM -->
-  <div class="bg-[#111118] p-6 rounded-xl">
-    <h3 class="text-xl font-bold">Premium</h3>
-    <div class="text-4xl mt-4">$60</div>
+  <main class="max-w-7xl mx-auto px-4 py-10 space-y-16">
 
-    <button onclick="checkout('stripe_premium')" class="mt-6 w-full bg-green-400 text-black py-3 rounded-xl font-bold">
-      Pay with Card
-    </button>
+    <!-- PLANS -->
+    <section>
+      <div class="mb-7 text-center">
+        <p class="text-hosGreen font-black tracking-widest text-sm">MONTH 1: ORIGIN</p>
+        <h2 class="text-3xl md:text-5xl font-black mt-2">Three Ways To Enter The System</h2>
+        <p class="text-white/60 mt-3 max-w-2xl mx-auto">
+          Entry Point gives you the first layer. Basic gives you the full Month 1 structure. Premium unlocks the expanded execution system.
+        </p>
+      </div>
 
-    <button onclick="checkout('paypal_premium')" class="mt-3 w-full bg-blue-400 text-black py-3 rounded-xl font-bold">
-      PayPal
-    </button>
+      <div class="grid md:grid-cols-3 gap-5" id="planGrid"></div>
 
-    <button onclick="checkout('square_premium')" class="mt-3 w-full bg-gray-300 text-black py-3 rounded-xl font-bold">
-      Square
-    </button>
-  </div>
+      <div id="paypalNotice" class="hidden mt-6 rounded-3xl border border-hosGold/40 bg-hosGold/10 p-5 text-center">
+        <p class="text-hosGold font-black">PayPal links are prepared. Paste your real PayPal links in the CHECKOUT_LINKS object to activate them.</p>
+      </div>
+    </section>
 
-</section>
+    <!-- WHAT -->
+    <section class="grid md:grid-cols-3 gap-5">
+      <article class="glass rounded-3xl border border-white/10 p-6">
+        <span class="text-hosGold font-black text-3xl">01</span>
+        <h3 class="mt-4 text-2xl font-black">Observe Your Patterns</h3>
+        <p class="mt-3 text-white/65">Identify the repeated thoughts, habits, reactions, and routines that control your day.</p>
+      </article>
 
-<script>
-const links = {
-  stripe_entry: "https://buy.stripe.com/28E14pcn57468wDh0mdnW01",
-  stripe_basic: "https://buy.stripe.com/9B68wR9aT6023cj25sdnW02",
-  stripe_premium: "https://buy.stripe.com/3cI7sNgDl9cebIP25sdnW00",
+      <article class="glass rounded-3xl border border-white/10 p-6">
+        <span class="text-hosGold font-black text-3xl">02</span>
+        <h3 class="mt-4 text-2xl font-black">Break Automatic Behavior</h3>
+        <p class="mt-3 text-white/65">Use daily actions and weekly reviews to interrupt behavior that keeps you stuck.</p>
+      </article>
 
-  paypal_entry: "https://www.paypal.com/ncp/payment/5CENKK5SG8XBG",
-  paypal_basic: "https://www.paypal.com/ncp/payment/FFACKFK88LBDC",
-  paypal_premium: "https://www.paypal.com/ncp/payment/UWDJ48Z9CXEES",
+      <article class="glass rounded-3xl border border-white/10 p-6">
+        <span class="text-hosGold font-black text-3xl">03</span>
+        <h3 class="mt-4 text-2xl font-black">Rebuild With Intention</h3>
+        <p class="mt-3 text-white/65">Create a cleaner internal operating system for discipline, focus, and action.</p>
+      </article>
+    </section>
 
-  square_entry: "https://square.link/u/H6LuweD4",
-  square_basic: "https://square.link/u/8uJKHCkM",
-  square_premium: "https://square.link/u/S4iY2ZmV"
-};
+    <!-- HOW -->
+    <section id="how" class="rounded-3xl border border-white/10 bg-hosCard p-6 md:p-10">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div>
+          <p class="text-hosGreen font-black tracking-widest text-sm">HOW IT WORKS</p>
+          <h2 class="text-3xl md:text-4xl font-black mt-2">Simple flow. Real checkout. Manual delivery.</h2>
+          <p class="mt-4 text-white/65">
+            Choose your version, complete payment through the official checkout page, and keep your confirmation for delivery.
+          </p>
+        </div>
 
-function checkout(type){
-  const link = links[type];
-  if(!link) return;
+        <div class="space-y-4">
+          <div class="rounded-2xl bg-black/30 border border-white/10 p-5">
+            <strong class="text-hosGold">Step 1 — Choose Access</strong>
+            <p class="text-white/65 mt-1">Entry Point, Basic, or Premium.</p>
+          </div>
 
-  const loader = document.createElement("div");
-  loader.className = "checkout-loader";
-  loader.innerHTML = "<div class='checkout-box'>Redirecting...</div>";
-  document.body.appendChild(loader);
+          <div class="rounded-2xl bg-black/30 border border-white/10 p-5">
+            <strong class="text-hosGold">Step 2 — Pay Securely</strong>
+            <p class="text-white/65 mt-1">Stripe, PayPal, or Square official checkout.</p>
+          </div>
 
-  setTimeout(()=> window.open(link,"_blank"),500);
-}
-</script>
+          <div class="rounded-2xl bg-black/30 border border-white/10 p-5">
+            <strong class="text-hosGold">Step 3 — Receive Access</strong>
+            <p class="text-white/65 mt-1">After confirmation, access is delivered manually.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- URGENCY -->
+    <section class="rounded-3xl border border-red-500/30 bg-red-600/10 p-8 text-center">
+      <p class="text-red-300 font-black tracking-widest text-sm">START WITH MONTH 1</p>
+      <h2 class="text-3xl md:text-5xl font-black mt-2">Most people never reach this level of awareness.</h2>
+      <p class="text-white/70 mt-4 max-w-2xl mx-auto">Start with ORIGIN and rebuild how you operate from the inside out.</p>
+      <div class="mt-6 text-2xl font-black text-hosGold" id="saleTimer">Access window open</div>
+      <a href="#plans" class="inline-block mt-8 px-8 py-4 rounded-2xl bg-hosGreen text-black font-black text-lg">Choose Your Access</a>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="pb-16">
+      <div class="text-center mb-8">
+        <p class="text-hosGreen font-black tracking-widest text-sm">FAQ</p>
+        <h2 class="text-3xl md:text-5xl font-black mt-2">Before You Start</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="glass rounded-3xl border border-white/10 p-6">
+          <h3 class="text-xl font-black">Is access instant?</h3>
+          <p class="mt-2 text-white/65">Checkout is instant. Access is delivered manually after confirmation.</p>
+        </div>
+
+        <div class="glass rounded-3xl border border-white/10 p-6">
+          <h3 class="text-xl font-black">What happens after payment?</h3>
+          <p class="mt-2 text-white/65">You are redirected to the confirmation page with instructions and support contact.</p>
+        </div>
+
+        <div class="glass rounded-3xl border border-white/10 p-6">
+          <h3 class="text-xl font-black">Is this a subscription?</h3>
+          <p class="mt-2 text-white/65">No. These are one-time Month 1 access options.</p>
+        </div>
+
+        <div class="glass rounded-3xl border border-white/10 p-6">
+          <h3 class="text-xl font-black">Which payment method should I use?</h3>
+          <p class="mt-2 text-white/65">Stripe is recommended for card checkout. PayPal and Square are available as alternatives.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black/30">
+    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-4 items-center justify-between text-sm text-white/50">
+      <div>© 2026 Human Operating System. All rights reserved.</div>
+      <div class="flex gap-5">
+        <a href="/terms.html" class="hover:text-white">Terms</a>
+        <a href="/privacy.html" class="hover:text-white">Privacy</a>
+        <a href="mailto:humanosystem@proton.me" class="hover:text-white">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const CHECKOUT_LINKS = {
+      square_entry: "https://square.link/u/H6LuweD4",
+      square_basic: "https://square.link/u/8uJKHCkM",
+      square_premium: "https://square.link/u/S4iY2ZmV",
+
+      stripe_entry: "https://buy.stripe.com/28E14pcn57468wDh0mdnW01",
+      stripe_basic: "https://buy.stripe.com/9B68wR9aT6023cj25sdnW02",
+      stripe_premium: "https://buy.stripe.com/3cI7sNgDl9cebIP25sdnW00",
+
+      paypal_entry: "#",
+      paypal_basic: "#",
+      paypal_premium: "#"
+    };
+
+    const plans = [
+      {
+        id: "entry",
+        label: "ENTRY POINT",
+        name: "ORIGIN — Entry",
+        price: "$19.99",
+        badge: "START HERE",
+        desc: "A focused entry into the Human Operating System.",
+        features: [
+          "Introduction to the system",
+          "Core principles overview",
+          "Essential frameworks",
+          "Access from any device"
+        ],
+        accent: "green",
+        highlight: false
+      },
+      {
+        id: "basic",
+        label: "BASIC",
+        name: "ORIGIN — Basic",
+        price: "$30",
+        badge: "MOST POPULAR",
+        desc: "The complete Month 1 self-system PDF.",
+        features: [
+          "30-day plan",
+          "Daily actions",
+          "Weekly reviews",
+          "Reflection page"
+        ],
+        accent: "gold",
+        highlight: true
+      },
+      {
+        id: "premium",
+        label: "PREMIUM",
+        name: "ORIGIN — Premium",
+        price: "$60",
+        badge: "FULL SYSTEM",
+        desc: "Expanded system with premium worksheets and community bonus.",
+        features: [
+          "Everything in Basic",
+          "Advanced prompts",
+          "Behavior tracking tools",
+          "Private community bonus"
+        ],
+        accent: "purple",
+        highlight: false
+      }
+    ];
+
+    let paymentMethod = "stripe";
+
+    function accentClasses(plan) {
+      if (plan.accent === "gold") {
+        return {
+          text: "text-hosGold",
+          badge: "bg-hosGold/15 border-hosGold/40 text-hosGold",
+          button: "bg-hosGold hover:bg-yellow-300 text-black",
+          shadow: "border-hosGold/45 shadow-lg shadow-yellow-500/10"
+        };
+      }
+
+      if (plan.accent === "purple") {
+        return {
+          text: "text-hosPurple",
+          badge: "bg-purple-500/15 border-purple-400/40 text-purple-300",
+          button: "bg-hosPurple hover:bg-purple-400 text-white",
+          shadow: "border-purple-400/35 shadow-lg shadow-purple-500/10"
+        };
+      }
+
+      return {
+        text: "text-hosGreen",
+        badge: "bg-green-500/15 border-green-400/40 text-green-300",
+        button: "bg-hosGreen hover:bg-green-400 text-black",
+        shadow: "border-white/10"
+      };
+    }
+
+    function paymentCopy() {
+      if (paymentMethod === "stripe") return "Secure card checkout";
+      if (paymentMethod === "paypal") return "Pay with PayPal";
+      return "Pay with Square";
+    }
+
+    function planCard(plan) {
+      const c = accentClasses(plan);
+      const border = plan.highlight ? c.shadow : "border-white/10";
+
+      return `
+        <article class="price-card glass rounded-3xl border ${border} p-6 flex flex-col min-h-[560px] relative overflow-hidden">
+          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(250,204,21,.10),transparent_34%)]"></div>
+
+          <div class="relative h-9">
+            <span class="inline-flex text-[11px] font-black px-3 py-1 rounded-full border ${c.badge}">
+              ${plan.badge}
+            </span>
+          </div>
+
+          <p class="relative mt-3 ${c.text} font-black tracking-widest text-xs">${plan.label}</p>
+          <h3 class="relative text-2xl font-black mt-2">${plan.name}</h3>
+
+          <div class="relative mt-6">
+            <div class="text-5xl font-black">${plan.price}</div>
+            <div class="mt-1 text-xs text-white/50 font-bold">One-time Month 1 access</div>
+          </div>
+
+          <p class="relative mt-5 text-white/65">${plan.desc}</p>
+
+          <div class="relative mt-5 rounded-2xl bg-black/30 border border-white/10 p-4">
+            <div class="text-sm text-white/50 font-bold">Current method</div>
+            <div class="mt-1 text-lg font-black ${c.text}">${paymentCopy()}</div>
+          </div>
+
+          <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
+            ${plan.features.map(feature => `<li>✔ ${feature}</li>`).join("")}
+            <li>✔ Secure payment flow</li>
+            <li>✔ Manual delivery after confirmation</li>
+          </ul>
+
+          <button onclick="startCheckout('${plan.id}')" class="relative mt-6 w-full rounded-2xl px-5 py-4 font-black ${c.button}">
+            ${paymentCopy()} — ${plan.price}
+          </button>
+
+          <p class="relative mt-3 text-[11px] text-white/45 text-center">
+            You will be redirected to the official ${paymentMethodLabel()} checkout page.
+          </p>
+        </article>
+      `;
+    }
+
+    function renderPlans() {
+      document.getElementById("planGrid").innerHTML = plans.map(planCard).join("");
+      document.getElementById("paypalNotice").classList.toggle("hidden", paymentMethod !== "paypal");
+    }
+
+    function paymentMethodLabel() {
+      if (paymentMethod === "stripe") return "Stripe";
+      if (paymentMethod === "paypal") return "PayPal";
+      return "Square";
+    }
+
+    function setPaymentMethod(method) {
+      paymentMethod = method;
+
+      const buttons = {
+        stripe: document.getElementById("stripeBtn"),
+        paypal: document.getElementById("paypalBtn"),
+        square: document.getElementById("squareBtn")
+      };
+
+      Object.keys(buttons).forEach(key => {
+        buttons[key].className = "payment-toggle px-4 md:px-5 py-3 rounded-xl text-sm font-black text-white/70";
+      });
+
+      buttons[method].className = "payment-toggle px-4 md:px-5 py-3 rounded-xl text-sm font-black bg-white text-black";
+
+      renderPlans();
+    }
+
+    document.querySelectorAll(".payment-toggle").forEach(btn => {
+      btn.addEventListener("click", () => setPaymentMethod(btn.dataset.method));
+    });
+
+    function startCheckout(planId) {
+      const key = `${paymentMethod}_${planId}`;
+      const link = CHECKOUT_LINKS[key];
+
+      if (!link || link === "#") {
+        showCheckoutToast(`${paymentMethodLabel()} checkout is being finalized. Please check back shortly.`);
+        return false;
+      }
+
+      showCheckoutLoader(paymentMethodLabel());
+
+      setTimeout(function () {
+        window.open(link, "_blank");
+        removeCheckoutLoader();
+      }, 550);
+
+      return false;
+    }
+
+    function showCheckoutLoader(method) {
+      removeCheckoutLoader();
+
+      const loader = document.createElement("div");
+      loader.id = "checkoutLoader";
+      loader.className = "checkout-loader";
+      loader.innerHTML = `
+        <div class="checkout-loader-box">
+          <div class="checkout-loader-title">Redirecting to secure ${method} checkout</div>
+          <div class="checkout-loader-sub">Please wait...</div>
+        </div>
+      `;
+
+      document.body.appendChild(loader);
+    }
+
+    function removeCheckoutLoader() {
+      const existing = document.getElementById("checkoutLoader");
+      if (existing) existing.remove();
+    }
+
+    function showCheckoutToast(message) {
+      const existing = document.querySelector(".checkout-toast");
+      if (existing) existing.remove();
+
+      const toast = document.createElement("div");
+      toast.className = "checkout-toast";
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(function () { toast.classList.add("show"); }, 10);
+
+      setTimeout(function () {
+        toast.classList.remove("show");
+        setTimeout(function () { toast.remove(); }, 250);
+      }, 3300);
+    }
+
+    function startCountdown() {
+      const timer = document.getElementById("saleTimer");
+      let seconds = 23 * 60 * 60 + 59 * 60 + 59;
+
+      setInterval(function () {
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        const s = seconds % 60;
+
+        timer.textContent = `Access window: ${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+        seconds = seconds > 0 ? seconds - 1 : 23 * 60 * 60 + 59 * 60 + 59;
+      }, 1000);
+    }
+
+    renderPlans();
+    startCountdown();
+  </script>
 </body>
 </html>
