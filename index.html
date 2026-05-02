@@ -299,261 +299,259 @@
   </footer>
 
   <script>
-   const CHECKOUT_LINKS = {
-
-  // 🟠 SQUARE
   const CHECKOUT_LINKS = {
-  square_entry: "https://square.link/u/H6LuweD4",
-  square_basic: "https://square.link/u/8uJKHCkM",
-  square_premium: "https://square.link/u/S4iY2ZmV",
+    square_entry: "https://square.link/u/H6LuweD4",
+    square_basic: "https://square.link/u/8uJKHCkM",
+    square_premium: "https://square.link/u/S4iY2ZmV",
 
-  stripe_entry: "https://buy.stripe.com/28E14pcn57468wDh0mdnW01",
-  stripe_basic: "https://buy.stripe.com/9B68wR9aT6023cj25sdnW02",
-  stripe_premium: "https://buy.stripe.com/3cI7sNgDl9cebIP25sdnW00",
+    stripe_entry: "https://buy.stripe.com/28E14pcn57468wDh0mdnW01",
+    stripe_basic: "https://buy.stripe.com/9B68wR9aT6023cj25sdnW02",
+    stripe_premium: "https://buy.stripe.com/3cI7sNgDl9cebIP25sdnW00",
 
-  paypal_entry: "https://www.paypal.com/ncp/payment/5CENKK5SG8XBG",
-  paypal_basic: "https://www.paypal.com/ncp/payment/FFACKFK88LBDC",
-  paypal_premium: "https://www.paypal.com/ncp/payment/UWDJ48Z9CXEES"
-};
-};
-    const plans = [
-      {
-        id: "entry",
-        label: "ENTRY POINT",
-        name: "ORIGIN — Entry",
-        price: "$19.99",
-        badge: "START HERE",
-        desc: "A focused entry into the Human Operating System.",
-        features: [
-          "Introduction to the system",
-          "Core principles overview",
-          "Essential frameworks",
-          "Access from any device"
-        ],
-        accent: "green",
-        highlight: false
-      },
-      {
-        id: "basic",
-        label: "BASIC",
-        name: "ORIGIN — Basic",
-        price: "$30",
-        badge: "MOST POPULAR",
-        desc: "The complete Month 1 self-system PDF.",
-        features: [
-          "30-day plan",
-          "Daily actions",
-          "Weekly reviews",
-          "Reflection page"
-        ],
-        accent: "gold",
-        highlight: true
-      },
-      {
-        id: "premium",
-        label: "PREMIUM",
-        name: "ORIGIN — Premium",
-        price: "$60",
-        badge: "FULL SYSTEM",
-        desc: "Expanded system with premium worksheets and community bonus.",
-        features: [
-          "Everything in Basic",
-          "Advanced prompts",
-          "Behavior tracking tools",
-          "Private community bonus"
-        ],
-        accent: "purple",
-        highlight: false
-      }
-    ];
+    paypal_entry: "https://www.paypal.com/ncp/payment/5CENKK5SG8XBG",
+    paypal_basic: "https://www.paypal.com/ncp/payment/FFACKFK88LBDC",
+    paypal_premium: "https://www.paypal.com/ncp/payment/UWDJ48Z9CXEES"
+  };
 
-    let paymentMethod = "stripe";
+  const plans = [
+    {
+      id: "entry",
+      label: "ENTRY POINT",
+      name: "ORIGIN — Entry",
+      price: "$19.99",
+      badge: "START HERE",
+      desc: "A focused entry into the Human Operating System.",
+      features: [
+        "Introduction to the system",
+        "Core principles overview",
+        "Essential frameworks",
+        "Access from any device"
+      ],
+      accent: "green",
+      highlight: false
+    },
+    {
+      id: "basic",
+      label: "BASIC",
+      name: "ORIGIN — Basic",
+      price: "$30",
+      badge: "MOST POPULAR",
+      desc: "The complete Month 1 self-system PDF.",
+      features: [
+        "30-day plan",
+        "Daily actions",
+        "Weekly reviews",
+        "Reflection page"
+      ],
+      accent: "gold",
+      highlight: true
+    },
+    {
+      id: "premium",
+      label: "PREMIUM",
+      name: "ORIGIN — Premium",
+      price: "$60",
+      badge: "FULL SYSTEM",
+      desc: "Expanded system with premium worksheets and community bonus.",
+      features: [
+        "Everything in Basic",
+        "Advanced prompts",
+        "Behavior tracking tools",
+        "Private community bonus"
+      ],
+      accent: "purple",
+      highlight: false
+    }
+  ];
 
-    function accentClasses(plan) {
-      if (plan.accent === "gold") {
-        return {
-          text: "text-hosGold",
-          badge: "bg-hosGold/15 border-hosGold/40 text-hosGold",
-          button: "bg-hosGold hover:bg-yellow-300 text-black",
-          shadow: "border-hosGold/45 shadow-lg shadow-yellow-500/10"
-        };
-      }
+  let paymentMethod = "stripe";
 
-      if (plan.accent === "purple") {
-        return {
-          text: "text-hosPurple",
-          badge: "bg-purple-500/15 border-purple-400/40 text-purple-300",
-          button: "bg-hosPurple hover:bg-purple-400 text-white",
-          shadow: "border-purple-400/35 shadow-lg shadow-purple-500/10"
-        };
-      }
-
+  function accentClasses(plan) {
+    if (plan.accent === "gold") {
       return {
-        text: "text-hosGreen",
-        badge: "bg-green-500/15 border-green-400/40 text-green-300",
-        button: "bg-hosGreen hover:bg-green-400 text-black",
-        shadow: "border-white/10"
+        text: "text-hosGold",
+        badge: "bg-hosGold/15 border-hosGold/40 text-hosGold",
+        button: "bg-hosGold hover:bg-yellow-300 text-black",
+        shadow: "border-hosGold/45 shadow-lg shadow-yellow-500/10"
       };
     }
 
-    function paymentCopy() {
-      if (paymentMethod === "stripe") return "Secure card checkout";
-      if (paymentMethod === "paypal") return "Pay with PayPal";
-      return "Pay with Square";
-    }
-
-    function planCard(plan) {
-      const c = accentClasses(plan);
-      const border = plan.highlight ? c.shadow : "border-white/10";
-
-      return `
-        <article class="price-card glass rounded-3xl border ${border} p-6 flex flex-col min-h-[560px] relative overflow-hidden">
-          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(250,204,21,.10),transparent_34%)]"></div>
-
-          <div class="relative h-9">
-            <span class="inline-flex text-[11px] font-black px-3 py-1 rounded-full border ${c.badge}">
-              ${plan.badge}
-            </span>
-          </div>
-
-          <p class="relative mt-3 ${c.text} font-black tracking-widest text-xs">${plan.label}</p>
-          <h3 class="relative text-2xl font-black mt-2">${plan.name}</h3>
-
-          <div class="relative mt-6">
-            <div class="text-5xl font-black">${plan.price}</div>
-            <div class="mt-1 text-xs text-white/50 font-bold">One-time Month 1 access</div>
-          </div>
-
-          <p class="relative mt-5 text-white/65">${plan.desc}</p>
-
-          <div class="relative mt-5 rounded-2xl bg-black/30 border border-white/10 p-4">
-            <div class="text-sm text-white/50 font-bold">Current method</div>
-            <div class="mt-1 text-lg font-black ${c.text}">${paymentCopy()}</div>
-          </div>
-
-          <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
-            ${plan.features.map(feature => `<li>✔ ${feature}</li>`).join("")}
-            <li>✔ Secure payment flow</li>
-            <li>✔ Manual delivery after confirmation</li>
-          </ul>
-
-          <button onclick="startCheckout('${plan.id}')" class="relative mt-6 w-full rounded-2xl px-5 py-4 font-black ${c.button}">
-            ${paymentCopy()} — ${plan.price}
-          </button>
-
-          <p class="relative mt-3 text-[11px] text-white/45 text-center">
-            You will be redirected to the official ${paymentMethodLabel()} checkout page.
-          </p>
-        </article>
-      `;
-    }
-
-    function renderPlans() {
-      document.getElementById("planGrid").innerHTML = plans.map(planCard).join("");
-      document.getElementById("paypalNotice").classList.toggle("hidden", paymentMethod !== "paypal");
-    }
-
-    function paymentMethodLabel() {
-      if (paymentMethod === "stripe") return "Stripe";
-      if (paymentMethod === "paypal") return "PayPal";
-      return "Square";
-    }
-
-    function setPaymentMethod(method) {
-      paymentMethod = method;
-
-      const buttons = {
-        stripe: document.getElementById("stripeBtn"),
-        paypal: document.getElementById("paypalBtn"),
-        square: document.getElementById("squareBtn")
+    if (plan.accent === "purple") {
+      return {
+        text: "text-hosPurple",
+        badge: "bg-purple-500/15 border-purple-400/40 text-purple-300",
+        button: "bg-hosPurple hover:bg-purple-400 text-white",
+        shadow: "border-purple-400/35 shadow-lg shadow-purple-500/10"
       };
-
-      Object.keys(buttons).forEach(key => {
-        buttons[key].className = "payment-toggle px-4 md:px-5 py-3 rounded-xl text-sm font-black text-white/70";
-      });
-
-      buttons[method].className = "payment-toggle px-4 md:px-5 py-3 rounded-xl text-sm font-black bg-white text-black";
-
-      renderPlans();
     }
 
-    document.querySelectorAll(".payment-toggle").forEach(btn => {
-      btn.addEventListener("click", () => setPaymentMethod(btn.dataset.method));
+    return {
+      text: "text-hosGreen",
+      badge: "bg-green-500/15 border-green-400/40 text-green-300",
+      button: "bg-hosGreen hover:bg-green-400 text-black",
+      shadow: "border-white/10"
+    };
+  }
+
+  function paymentCopy() {
+    if (paymentMethod === "stripe") return "Secure card checkout";
+    if (paymentMethod === "paypal") return "Pay with PayPal";
+    return "Pay with Square";
+  }
+
+  function paymentMethodLabel() {
+    if (paymentMethod === "stripe") return "Stripe";
+    if (paymentMethod === "paypal") return "PayPal";
+    return "Square";
+  }
+
+  function planCard(plan) {
+    const c = accentClasses(plan);
+    const border = plan.highlight ? c.shadow : "border-white/10";
+
+    return `
+      <article class="price-card glass rounded-3xl border ${border} p-6 flex flex-col min-h-[560px] relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(250,204,21,.10),transparent_34%)]"></div>
+
+        <div class="relative h-9">
+          <span class="inline-flex text-[11px] font-black px-3 py-1 rounded-full border ${c.badge}">
+            ${plan.badge}
+          </span>
+        </div>
+
+        <p class="relative mt-3 ${c.text} font-black tracking-widest text-xs">${plan.label}</p>
+        <h3 class="relative text-2xl font-black mt-2">${plan.name}</h3>
+
+        <div class="relative mt-6">
+          <div class="text-5xl font-black">${plan.price}</div>
+          <div class="mt-1 text-xs text-white/50 font-bold">One-time Month 1 access</div>
+        </div>
+
+        <p class="relative mt-5 text-white/65">${plan.desc}</p>
+
+        <div class="relative mt-5 rounded-2xl bg-black/30 border border-white/10 p-4">
+          <div class="text-sm text-white/50 font-bold">Current method</div>
+          <div class="mt-1 text-lg font-black ${c.text}">${paymentCopy()}</div>
+        </div>
+
+        <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
+          ${plan.features.map(feature => `<li>✔ ${feature}</li>`).join("")}
+          <li>✔ Secure payment flow</li>
+          <li>✔ Manual delivery after confirmation</li>
+        </ul>
+
+        <button onclick="startCheckout('${plan.id}')" class="relative mt-6 w-full rounded-2xl px-5 py-4 font-black ${c.button}">
+          ${paymentCopy()} — ${plan.price}
+        </button>
+
+        <p class="relative mt-3 text-[11px] text-white/45 text-center">
+          You will be redirected to the official ${paymentMethodLabel()} checkout page.
+        </p>
+      </article>
+    `;
+  }
+
+  function renderPlans() {
+    document.getElementById("planGrid").innerHTML = plans.map(planCard).join("");
+    const paypalNotice = document.getElementById("paypalNotice");
+    if (paypalNotice) paypalNotice.classList.add("hidden");
+  }
+
+  function setPaymentMethod(method) {
+    paymentMethod = method;
+
+    const buttons = {
+      stripe: document.getElementById("stripeBtn"),
+      paypal: document.getElementById("paypalBtn"),
+      square: document.getElementById("squareBtn")
+    };
+
+    Object.keys(buttons).forEach(key => {
+      buttons[key].className = "payment-toggle px-4 md:px-5 py-3 rounded-xl text-sm font-black text-white/70";
     });
 
-    function startCheckout(planId) {
-      const key = `${paymentMethod}_${planId}`;
-      const link = CHECKOUT_LINKS[key];
+    buttons[method].className = "payment-toggle px-4 md:px-5 py-3 rounded-xl text-sm font-black bg-white text-black";
 
-      if (!link || link === "#") {
-        showCheckoutToast(`${paymentMethodLabel()} checkout is being finalized. Please check back shortly.`);
-        return false;
-      }
+    renderPlans();
+  }
 
-      showCheckoutLoader(paymentMethodLabel());
+  document.querySelectorAll(".payment-toggle").forEach(btn => {
+    btn.addEventListener("click", () => setPaymentMethod(btn.dataset.method));
+  });
 
-      setTimeout(function () {
-        window.open(link, "_blank");
-        removeCheckoutLoader();
-      }, 550);
+  function startCheckout(planId) {
+    const key = `${paymentMethod}_${planId}`;
+    const link = CHECKOUT_LINKS[key];
 
+    if (!link || link === "#") {
+      showCheckoutToast(`${paymentMethodLabel()} checkout is being finalized. Please check back shortly.`);
       return false;
     }
 
-    function showCheckoutLoader(method) {
+    showCheckoutLoader(paymentMethodLabel());
+
+    setTimeout(function () {
+      window.open(link, "_blank");
       removeCheckoutLoader();
+    }, 550);
 
-      const loader = document.createElement("div");
-      loader.id = "checkoutLoader";
-      loader.className = "checkout-loader";
-      loader.innerHTML = `
-        <div class="checkout-loader-box">
-          <div class="checkout-loader-title">Redirecting to secure ${method} checkout</div>
-          <div class="checkout-loader-sub">Please wait...</div>
-        </div>
-      `;
+    return false;
+  }
 
-      document.body.appendChild(loader);
-    }
+  function showCheckoutLoader(method) {
+    removeCheckoutLoader();
 
-    function removeCheckoutLoader() {
-      const existing = document.getElementById("checkoutLoader");
-      if (existing) existing.remove();
-    }
+    const loader = document.createElement("div");
+    loader.id = "checkoutLoader";
+    loader.className = "checkout-loader";
+    loader.innerHTML = `
+      <div class="checkout-loader-box">
+        <div class="checkout-loader-title">Redirecting to secure ${method} checkout</div>
+        <div class="checkout-loader-sub">Please wait...</div>
+      </div>
+    `;
 
-    function showCheckoutToast(message) {
-      const existing = document.querySelector(".checkout-toast");
-      if (existing) existing.remove();
+    document.body.appendChild(loader);
+  }
 
-      const toast = document.createElement("div");
-      toast.className = "checkout-toast";
-      toast.textContent = message;
-      document.body.appendChild(toast);
+  function removeCheckoutLoader() {
+    const existing = document.getElementById("checkoutLoader");
+    if (existing) existing.remove();
+  }
 
-      setTimeout(function () { toast.classList.add("show"); }, 10);
+  function showCheckoutToast(message) {
+    const existing = document.querySelector(".checkout-toast");
+    if (existing) existing.remove();
 
-      setTimeout(function () {
-        toast.classList.remove("show");
-        setTimeout(function () { toast.remove(); }, 250);
-      }, 3300);
-    }
+    const toast = document.createElement("div");
+    toast.className = "checkout-toast";
+    toast.textContent = message;
+    document.body.appendChild(toast);
 
-    function startCountdown() {
-      const timer = document.getElementById("saleTimer");
-      let seconds = 23 * 60 * 60 + 59 * 60 + 59;
+    setTimeout(function () { toast.classList.add("show"); }, 10);
 
-      setInterval(function () {
-        const h = Math.floor(seconds / 3600);
-        const m = Math.floor((seconds % 3600) / 60);
-        const s = seconds % 60;
+    setTimeout(function () {
+      toast.classList.remove("show");
+      setTimeout(function () { toast.remove(); }, 250);
+    }, 3300);
+  }
 
-        timer.textContent = `Access window: ${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-        seconds = seconds > 0 ? seconds - 1 : 23 * 60 * 60 + 59 * 60 + 59;
-      }, 1000);
-    }
+  function startCountdown() {
+    const timer = document.getElementById("saleTimer");
+    let seconds = 23 * 60 * 60 + 59 * 60 + 59;
 
-    renderPlans();
-    startCountdown();
-  </script>
+    setInterval(function () {
+      const h = Math.floor(seconds / 3600);
+      const m = Math.floor((seconds % 3600) / 60);
+      const s = seconds % 60;
+
+      timer.textContent = `Access window: ${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+      seconds = seconds > 0 ? seconds - 1 : 23 * 60 * 60 + 59 * 60 + 59;
+    }, 1000);
+  }
+
+  renderPlans();
+  startCountdown();
+</script>
 </body>
 </html>
