@@ -1,13 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Human Operating System — Unlimited Passes</title>
-  <meta name="description" content="Choose your Human Operating System unlimited access pass. Secure checkout with Stripe and PayPal." />
+  <meta name="description" content="Join the Human Operating System platform and access creator-focused digital training, automation foundations, and bonus ecosystem access." />
 
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -40,65 +42,12 @@
     .price-card:hover {
       transform: translateY(-5px);
     }
-    .checkout-loader {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: rgba(0,0,0,.72);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(10px);
-    }
-    .checkout-loader-box {
-      max-width: 420px;
-      width: calc(100% - 32px);
-      border: 1px solid rgba(250,204,21,.35);
-      background: linear-gradient(180deg, rgba(17,17,24,.98), rgba(7,7,10,.98));
-      border-radius: 26px;
-      padding: 32px;
-      text-align: center;
-      box-shadow: 0 0 40px rgba(250,204,21,.12);
-    }
-    .checkout-loader-title {
-      font-size: 20px;
-      font-weight: 900;
-      color: white;
-    }
-    .checkout-loader-sub {
-      margin-top: 8px;
-      color: rgba(255,255,255,.62);
-      font-size: 14px;
-    }
-    .checkout-toast {
-      position: fixed;
-      left: 50%;
-      bottom: 28px;
-      transform: translateX(-50%) translateY(24px);
-      opacity: 0;
-      z-index: 999999;
-      background: rgba(17,17,24,.96);
-      border: 1px solid rgba(255,255,255,.16);
-      color: white;
-      padding: 14px 18px;
-      border-radius: 16px;
-      max-width: calc(100% - 32px);
-      box-shadow: 0 18px 45px rgba(0,0,0,.45);
-      transition: all .25s ease;
-      text-align: center;
-      font-weight: 800;
-      font-size: 14px;
-    }
-    .checkout-toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
   </style>
+
 </head>
 
 <body class="bg-hosDark text-white antialiased">
 
-  <!-- NAV -->
   <nav class="sticky top-0 z-50 bg-hosDark/90 backdrop-blur border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
       <a href="/" class="flex items-center gap-3 font-black">
@@ -106,303 +55,196 @@
         <span class="hidden sm:block">Human Operating System</span>
       </a>
 
-      <div class="hidden md:flex items-center gap-6 text-sm font-bold text-white/60">
-        <a href="#plans" class="hover:text-white">Plans</a>
-        <a href="#how" class="hover:text-white">How It Works</a>
-        <a href="#faq" class="hover:text-white">FAQ</a>
-      </div>
+```
+  <div class="hidden md:flex items-center gap-6 text-sm font-bold text-white/60">
+    <a href="#plans" class="hover:text-white">Programs</a>
+    <a href="#how" class="hover:text-white">How It Works</a>
+    <a href="#faq" class="hover:text-white">FAQ</a>
+  </div>
 
-      <a href="#plans" class="px-5 py-3 rounded-2xl bg-hosGold text-black font-black text-sm hover:bg-yellow-300">
-        Start Month 1
-      </a>
-    </div>
+  <a href="#plans" class="px-5 py-3 rounded-2xl bg-hosGold text-black font-black text-sm hover:bg-yellow-300">
+    Start Step 1
+  </a>
+</div>
+```
+
   </nav>
 
-  <!-- HERO -->
   <section class="relative overflow-hidden border-b border-white/10">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(239,68,68,.28),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(250,204,21,.16),transparent_35%),radial-gradient(circle_at_center,rgba(56,189,248,.08),transparent_46%)]"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 py-16 md:py-24 text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-600/20 border border-red-500/40 text-red-200 text-sm font-black mb-6">
-        UNLIMITED ACCESS — ACTIVE MEMBER FEED
-      </div>
+```
+<div class="relative max-w-7xl mx-auto px-4 py-16 md:py-24 text-center">
+  <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-600/20 border border-red-500/40 text-red-200 text-sm font-black mb-6">
+    HUMANO SYSTEMS — CREATOR PLATFORM ACCESS
+  </div>
 
-      <h1 class="text-4xl md:text-7xl font-black tracking-tight leading-tight">
-        Choose Your Unlimited Pass.<br class="hidden md:block" />
-        <span class="text-hosGold">Access Starts After Confirmation.</span>
-      </h1>
+  <h1 class="text-4xl md:text-7xl font-black tracking-tight leading-tight">
+    Learn The Foundations Of<br class="hidden md:block" />
+    <span class="text-hosGold">The Human Operating System.</span>
+  </h1>
 
-      <p class="mt-6 text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
-        Get access to the active member feed, rotating daily content, protected links, premium sections, and unlimited downloads during your selected access window.
-      </p>
+  <p class="mt-6 text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
+    Join the Humano Systems ecosystem and explore digital automation, creator systems, execution frameworks, and platform transition access. Bonus TOC access is included during the transition era.
+  </p>
 
-      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#plans" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-hosGreen hover:bg-green-400 text-black font-black text-lg shadow-lg shadow-green-500/20">
-          Start for $9.99
-        </a>
-        <a href="#how" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-lg">
-          How It Works
-        </a>
-      </div>
+  <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+    <a href="#plans" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-hosGreen hover:bg-green-400 text-black font-black text-lg shadow-lg shadow-green-500/20">
+      Start Step 1 — $9.99
+    </a>
+    <a href="#how" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/10 font-bold text-lg">
+      Explore The Platform
+    </a>
+  </div>
 
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto text-sm font-bold text-white/70">
-        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Unlimited Downloads</div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Secure Checkout</div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Fast Manual Activation</div>
-      </div>
-    </div>
-  </section>
+  <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto text-sm font-bold text-white/70">
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Creator System Training</div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Secure Checkout</div>
+    <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">Bonus Ecosystem Access</div>
+  </div>
+</div>
+```
 
-  <!-- SECURE PAYMENT METHODS -->
-  <section id="plans" class="sticky top-[73px] z-40 bg-hosDark/95 backdrop-blur border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 py-4">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-          <h2 class="text-xl font-black">Choose Your Access Pass</h2>
-          <p class="text-sm text-white/60">Secure checkout available through Stripe or PayPal.</p>
-        </div>
-
-        <div class="p-1 bg-white/10 rounded-2xl border border-white/10 grid grid-cols-2 w-full md:w-auto text-center">
-          <span class="px-4 md:px-5 py-3 rounded-xl text-sm font-black bg-white text-black">Card / Stripe</span>
-          <span class="px-4 md:px-5 py-3 rounded-xl text-sm font-black text-white/70">PayPal</span>
-        </div>
-      </div>
-    </div>
   </section>
 
   <main class="max-w-7xl mx-auto px-4 py-10 space-y-16">
 
-    <!-- PLANS -->
-    <section>
-      <div class="mb-7 text-center">
-        <p class="text-hosGreen font-black tracking-widest text-sm">UNLIMITED PASSES</p>
-        <h2 class="text-3xl md:text-5xl font-black mt-2">Pick Your Access Window</h2>
-        <p class="text-white/60 mt-3 max-w-2xl mx-auto">
-          Select the pass that fits your timing. Access is activated manually after payment confirmation.
-        </p>
+```
+<section id="plans">
+  <div class="mb-7 text-center">
+    <p class="text-hosGreen font-black tracking-widest text-sm">HUMANO SYSTEMS PROGRAMS</p>
+    <h2 class="text-3xl md:text-5xl font-black mt-2">Choose Your Enrollment Level</h2>
+    <p class="text-white/60 mt-3 max-w-2xl mx-auto">
+      Every package includes access to the Humano Systems platform and educational onboarding experience.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+
+    <article class="price-card glass rounded-3xl border border-white/10 p-6 flex flex-col min-h-[620px] relative overflow-hidden">
+      <span class="relative inline-flex w-fit text-[11px] font-black px-3 py-1 rounded-full border bg-orange-500/15 border-orange-400/40 text-orange-300">START HERE</span>
+      <p class="relative mt-5 text-orange-400 font-black tracking-widest text-xs">STEP 1 COURSE</p>
+      <h3 class="relative text-2xl font-black mt-2">1 DAY STARTER ACCESS</h3>
+
+      <div class="relative mt-6">
+        <div class="text-5xl font-black">$9.99</div>
+        <div class="mt-1 text-xs text-white/50 font-bold">Starter enrollment</div>
       </div>
 
-      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5" id="planGrid">
+      <p class="relative mt-5 text-white/65">
+        Start the Humano Systems Step 1 Course and learn the foundations of creator automation, execution, discipline, and digital systems.
+      </p>
 
-        <!-- 1 DAY -->
-        <article class="price-card glass rounded-3xl border border-white/10 p-6 flex flex-col min-h-[560px] relative overflow-hidden">
-          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,.12),transparent_34%)]"></div>
-          <span class="relative inline-flex w-fit text-[11px] font-black px-3 py-1 rounded-full border bg-orange-500/15 border-orange-400/40 text-orange-300">START HERE</span>
-          <p class="relative mt-5 text-orange-400 font-black tracking-widest text-xs">24 HOURS</p>
-          <h3 class="relative text-2xl font-black mt-2">1 DAY UNLIMITED PASS</h3>
-          <div class="relative mt-6">
-            <div class="text-5xl font-black">$9.99</div>
-            <div class="mt-1 text-xs text-white/50 font-bold">1 day access</div>
-          </div>
-          <p class="relative mt-5 text-white/65">Gain full access to the active TOC member feed for 24 hours.</p>
-          <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
-            <li>✔ Unlimited downloads</li>
-            <li>✔ 11-minute download cooldown</li>
-            <li>✔ Access to rotating daily content</li>
-            <li>✔ Tokenized protected links</li>
-            <li>✔ Premium member sections</li>
-          </ul>
-          <div class="relative mt-6 grid gap-3">
-            <a href="https://buy.stripe.com/5kQaEZcn51JM8wD6lIdnW03" target="_blank" rel="noopener noreferrer" class="w-full rounded-2xl px-5 py-4 font-black bg-orange-500 hover:bg-orange-400 text-black text-center">Pay with Card — $9.99</a>
-            <a href="https://www.paypal.com/ncp/payment/RXXLTQGNF3CYN" target="_blank" rel="noopener noreferrer" class="w-full rounded-2xl px-5 py-4 font-black bg-white/10 hover:bg-white/15 text-white border border-white/10 text-center">Pay with PayPal</a>
-          </div>
-        </article>
+      <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
+        <li>✔ Humano Systems Step 1 Course</li>
+        <li>✔ Platform introduction access</li>
+        <li>✔ Creator mindset foundations</li>
+        <li>✔ Automation system preview</li>
+        <li>✔ Transition-era ecosystem access</li>
+        <li>✔ BONUS TOC starter access</li>
+      </ul>
 
-        <!-- 3 DAY -->
-        <article class="price-card glass rounded-3xl border border-white/10 p-6 flex flex-col min-h-[560px] relative overflow-hidden">
-          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,.10),transparent_34%)]"></div>
-          <span class="relative inline-flex w-fit text-[11px] font-black px-3 py-1 rounded-full border bg-green-500/15 border-green-400/40 text-green-300">72 HOURS</span>
-          <p class="relative mt-5 text-hosGreen font-black tracking-widest text-xs">3 DAYS</p>
-          <h3 class="relative text-2xl font-black mt-2">3 DAY UNLIMITED PASS</h3>
-          <div class="relative mt-6">
-            <div class="text-5xl font-black">$19.99</div>
-            <div class="mt-1 text-xs text-white/50 font-bold">3 days access</div>
-          </div>
-          <p class="relative mt-5 text-white/65">Gain full access to the active TOC member feed for 72 hours.</p>
-          <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
-            <li>✔ Unlimited downloads</li>
-            <li>✔ 11-minute download cooldown</li>
-            <li>✔ Access to rotating daily content</li>
-            <li>✔ Tokenized protected links</li>
-            <li>✔ Premium member sections</li>
-          </ul>
-          <div class="relative mt-6 grid gap-3">
-            <a href="https://buy.stripe.com/eVq8wRdr9coqdQXcK6dnW04" target="_blank" rel="noopener noreferrer" class="w-full rounded-2xl px-5 py-4 font-black bg-hosGreen hover:bg-green-400 text-black text-center">Pay with Card — $19.99</a>
-            <a href="https://www.paypal.com/ncp/payment/BTSXBUVCXA4PC" target="_blank" rel="noopener noreferrer" class="w-full rounded-2xl px-5 py-4 font-black bg-white/10 hover:bg-white/15 text-white border border-white/10 text-center">Pay with PayPal</a>
-          </div>
-        </article>
-
-        <!-- 7 DAY -->
-        <article class="price-card glass rounded-3xl border border-hosGold/45 shadow-lg shadow-yellow-500/10 p-6 flex flex-col min-h-[560px] relative overflow-hidden">
-          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(250,204,21,.12),transparent_34%)]"></div>
-          <span class="relative inline-flex w-fit text-[11px] font-black px-3 py-1 rounded-full border bg-hosGold/15 border-hosGold/40 text-hosGold">MOST POPULAR</span>
-          <p class="relative mt-5 text-hosGold font-black tracking-widest text-xs">7 DAYS</p>
-          <h3 class="relative text-2xl font-black mt-2">7 DAY UNLIMITED PASS</h3>
-          <div class="relative mt-6">
-            <div class="text-5xl font-black">$29.99</div>
-            <div class="mt-1 text-xs text-white/50 font-bold">1 week access</div>
-          </div>
-          <p class="relative mt-5 text-white/65">Gain full access to the active TOC member feed for 7 days.</p>
-          <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
-            <li>✔ Unlimited downloads</li>
-            <li>✔ 11-minute download cooldown</li>
-            <li>✔ Access to rotating daily content</li>
-            <li>✔ Tokenized protected links</li>
-            <li>✔ Premium member sections</li>
-          </ul>
-          <div class="relative mt-6 grid gap-3">
-            <a href="https://buy.stripe.com/00w3cx5YHfAC28f11odnW07" target="_blank" rel="noopener noreferrer" class="w-full rounded-2xl px-5 py-4 font-black bg-hosGold hover:bg-yellow-300 text-black text-center">Pay with Card — $29.99</a>
-            <a href="https://www.paypal.com/ncp/payment/QQ2F3KFGFSQWN" target="_blank" rel="noopener noreferrer" class="w-full rounded-2xl px-5 py-4 font-black bg-white/10 hover:bg-white/15 text-white border border-white/10 text-center">Pay with PayPal</a>
-          </div>
-        </article>
-
-        <!-- MONTHLY -->
-        <article class="price-card glass rounded-3xl border border-purple-400/35 shadow-lg shadow-purple-500/10 p-6 flex flex-col min-h-[560px] relative overflow-hidden">
-          <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(168,85,247,.12),transparent_34%)]"></div>
-          <span class="relative inline-flex w-fit text-[11px] font-black px-3 py-1 rounded-full border bg-purple-500/15 border-purple-400/40 text-purple-300">FULL MONTH</span>
-          <p class="relative mt-5 text-hosPurple font-black tracking-widest text-xs">30 DAYS</p>
-          <h3 class="relative text-2xl font-black mt-2">MEMBERS MONTHLY UNLIMITED PASS</h3>
-          <div class="relative mt-6">
-            <div class="text-5xl font-black">$89.99</div>
-            <div class="mt-1 text-xs text-white/50 font-bold">30 days access</div>
-          </div>
-          <p class="relative mt-5 text-white/65">Gain full access to the active TOC member feed for 30 days.</p>
-          <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
-            <li>✔ Unlimited downloads</li>
-            <li>✔ 11-minute download cooldown</li>
-            <li>✔ Access to rotating daily content</li>
-            <li>✔ Tokenized protected links</li>
-            <li>✔ Premium member sections</li>
-          </ul>
-          <div class="relative mt-6 grid gap-3">
-            <a href="https://buy.stripe.com/4gM00lgDl3RUfZ525sdnW06" target="_blank" rel="noopener noreferrer" class="w-full rounded-2xl px-5 py-4 font-black bg-hosPurple hover:bg-purple-400 text-white text-center">Pay with Card — $89.99</a>
-            <a href="https://www.paypal.com/ncp/payment/6A8S4YVSFB6CC" target="_blank" rel="noopener noreferrer" class="w-full rounded-2xl px-5 py-4 font-black bg-white/10 hover:bg-white/15 text-white border border-white/10 text-center">Pay with PayPal</a>
-          </div>
-        </article>
-
+      <div class="relative mt-6 grid gap-3">
+        <a href="https://buy.stripe.com/5kQaEZcn51JM8wD6lIdnW03" target="_blank" class="w-full rounded-2xl px-5 py-4 font-black bg-orange-500 hover:bg-orange-400 text-black text-center">Pay with Card — $9.99</a>
+        <a href="https://www.paypal.com/ncp/payment/RXXLTQGNF3CYN" target="_blank" class="w-full rounded-2xl px-5 py-4 font-black bg-white/10 hover:bg-white/15 text-white border border-white/10 text-center">Pay with PayPal</a>
+        <p class="text-center text-xs text-white/40 font-bold">Educational digital package + bonus ecosystem access</p>
       </div>
-    </section>
+    </article>
 
-    <!-- WHAT -->
-    <section class="grid md:grid-cols-3 gap-5">
-      <article class="glass rounded-3xl border border-white/10 p-6">
-        <span class="text-hosGold font-black text-3xl">01</span>
-        <h3 class="mt-4 text-2xl font-black">Choose Your Pass</h3>
-        <p class="mt-3 text-white/65">Pick 1 day, 3 day, 7 day, or monthly access depending on your timing.</p>
-      </article>
+    <article class="price-card glass rounded-3xl border border-white/10 p-6 flex flex-col min-h-[620px] relative overflow-hidden">
+      <span class="relative inline-flex w-fit text-[11px] font-black px-3 py-1 rounded-full border bg-green-500/15 border-green-400/40 text-green-300">72 HOURS</span>
+      <p class="relative mt-5 text-hosGreen font-black tracking-widest text-xs">FOCUSED EXECUTION</p>
+      <h3 class="relative text-2xl font-black mt-2">3 DAY ACCESS PROGRAM</h3>
 
-      <article class="glass rounded-3xl border border-white/10 p-6">
-        <span class="text-hosGold font-black text-3xl">02</span>
-        <h3 class="mt-4 text-2xl font-black">Pay Securely</h3>
-        <p class="mt-3 text-white/65">Complete checkout through Stripe card payment or PayPal.</p>
-      </article>
-
-      <article class="glass rounded-3xl border border-white/10 p-6">
-        <span class="text-hosGold font-black text-3xl">03</span>
-        <h3 class="mt-4 text-2xl font-black">Receive Access</h3>
-        <p class="mt-3 text-white/65">After confirmation, access is activated manually with protected member access.</p>
-      </article>
-    </section>
-
-    <!-- HOW -->
-    <section id="how" class="rounded-3xl border border-white/10 bg-hosCard p-6 md:p-10">
-      <div class="grid md:grid-cols-2 gap-8 items-start">
-        <div>
-          <p class="text-hosGreen font-black tracking-widest text-sm">HOW IT WORKS</p>
-          <h2 class="text-3xl md:text-4xl font-black mt-2">Simple flow. Real checkout. Manual activation.</h2>
-          <p class="mt-4 text-white/65">
-            Choose your pass, complete payment through the official checkout page, and keep your confirmation for activation.
-          </p>
-        </div>
-
-        <div class="space-y-4">
-          <div class="rounded-2xl bg-black/30 border border-white/10 p-5">
-            <strong class="text-hosGold">Step 1 — Choose Access</strong>
-            <p class="text-white/65 mt-1">1 day, 3 day, 7 day, or monthly access.</p>
-          </div>
-
-          <div class="rounded-2xl bg-black/30 border border-white/10 p-5">
-            <strong class="text-hosGold">Step 2 — Pay Securely</strong>
-            <p class="text-white/65 mt-1">Stripe card checkout or PayPal official checkout.</p>
-          </div>
-
-          <div class="rounded-2xl bg-black/30 border border-white/10 p-5">
-            <strong class="text-hosGold">Step 3 — Receive Access</strong>
-            <p class="text-white/65 mt-1">After confirmation, access is activated manually.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- URGENCY -->
-    <section class="rounded-3xl border border-red-500/30 bg-red-600/10 p-8 text-center">
-      <p class="text-red-300 font-black tracking-widest text-sm">ACCESS WINDOW OPEN</p>
-      <h2 class="text-3xl md:text-5xl font-black mt-2">Choose your access pass and unlock the active member feed.</h2>
-      <p class="text-white/70 mt-4 max-w-2xl mx-auto">Select the access window that fits you best. Access is activated after payment confirmation.</p>
-      <div class="mt-6 text-2xl font-black text-hosGold" id="saleTimer">Access window open</div>
-      <a href="#plans" class="inline-block mt-8 px-8 py-4 rounded-2xl bg-hosGreen text-black font-black text-lg">Choose Your Access</a>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="pb-16">
-      <div class="text-center mb-8">
-        <p class="text-hosGreen font-black tracking-widest text-sm">FAQ</p>
-        <h2 class="text-3xl md:text-5xl font-black mt-2">Before You Start</h2>
+      <div class="relative mt-6">
+        <div class="text-5xl font-black">$19.99</div>
+        <div class="mt-1 text-xs text-white/50 font-bold">Extended access</div>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-5">
-        <div class="glass rounded-3xl border border-white/10 p-6">
-          <h3 class="text-xl font-black">Is access instant?</h3>
-          <p class="mt-2 text-white/65">Checkout is instant. Access is activated manually after confirmation.</p>
-        </div>
+      <p class="relative mt-5 text-white/65">
+        Build consistency, structure, and execution habits while exploring the Humano Systems ecosystem and creator platform.
+      </p>
 
-        <div class="glass rounded-3xl border border-white/10 p-6">
-          <h3 class="text-xl font-black">What happens after payment?</h3>
-          <p class="mt-2 text-white/65">Please keep your payment confirmation. Activation instructions are sent after review.</p>
-        </div>
+      <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
+        <li>✔ Creator execution frameworks</li>
+        <li>✔ Automation ecosystem preview</li>
+        <li>✔ Platform onboarding access</li>
+        <li>✔ Digital creator guidance</li>
+        <li>✔ Transition-era ecosystem access</li>
+        <li>✔ BONUS TOC access included</li>
+      </ul>
 
-        <div class="glass rounded-3xl border border-white/10 p-6">
-          <h3 class="text-xl font-black">Is this a subscription?</h3>
-          <p class="mt-2 text-white/65">These are access passes for the selected time window.</p>
-        </div>
-
-        <div class="glass rounded-3xl border border-white/10 p-6">
-          <h3 class="text-xl font-black">Which payment method should I use?</h3>
-          <p class="mt-2 text-white/65">Stripe is recommended for card checkout. PayPal is available as an alternative.</p>
-        </div>
+      <div class="relative mt-6 grid gap-3">
+        <a href="https://buy.stripe.com/eVq8wRdr9coqdQXcK6dnW04" target="_blank" class="w-full rounded-2xl px-5 py-4 font-black bg-hosGreen hover:bg-green-400 text-black text-center">Pay with Card — $19.99</a>
+        <a href="https://www.paypal.com/ncp/payment/BTSXBUVCXA4PC" target="_blank" class="w-full rounded-2xl px-5 py-4 font-black bg-white/10 hover:bg-white/15 text-white border border-white/10 text-center">Pay with PayPal</a>
+        <p class="text-center text-xs text-white/40 font-bold">Educational digital package + bonus ecosystem access</p>
       </div>
-    </section>
+    </article>
+
+    <article class="price-card glass rounded-3xl border border-hosGold/45 shadow-lg shadow-yellow-500/10 p-6 flex flex-col min-h-[620px] relative overflow-hidden">
+      <span class="relative inline-flex w-fit text-[11px] font-black px-3 py-1 rounded-full border bg-hosGold/15 border-hosGold/40 text-hosGold">MOST POPULAR</span>
+      <p class="relative mt-5 text-hosGold font-black tracking-widest text-xs">CREATOR SYSTEM ACCESS</p>
+      <h3 class="relative text-2xl font-black mt-2">7 DAY IMMERSION PROGRAM</h3>
+
+      <div class="relative mt-6">
+        <div class="text-5xl font-black">$29.99</div>
+        <div class="mt-1 text-xs text-white/50 font-bold">Immersion access</div>
+      </div>
+
+      <p class="relative mt-5 text-white/65">
+        Designed for creators and early supporters who want to experience the full Humano Systems platform while receiving bonus ecosystem access.
+      </p>
+
+      <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
+        <li>✔ Humano Systems onboarding</li>
+        <li>✔ Creator system immersion</li>
+        <li>✔ Automation platform preview</li>
+        <li>✔ Transition-era ecosystem access</li>
+        <li>✔ Community introduction access</li>
+        <li>✔ BONUS TOC member access</li>
+      </ul>
+
+      <div class="relative mt-6 grid gap-3">
+        <a href="https://buy.stripe.com/00w3cx5YHfAC28f11odnW07" target="_blank" class="w-full rounded-2xl px-5 py-4 font-black bg-hosGold hover:bg-yellow-300 text-black text-center">Pay with Card — $29.99</a>
+        <a href="https://www.paypal.com/ncp/payment/QQ2F3KFGFSQWN" target="_blank" class="w-full rounded-2xl px-5 py-4 font-black bg-white/10 hover:bg-white/15 text-white border border-white/10 text-center">Pay with PayPal</a>
+        <p class="text-center text-xs text-white/40 font-bold">Educational digital package + bonus ecosystem access</p>
+      </div>
+    </article>
+
+    <article class="price-card glass rounded-3xl border border-purple-400/35 shadow-lg shadow-purple-500/10 p-6 flex flex-col min-h-[620px] relative overflow-hidden">
+      <span class="relative inline-flex w-fit text-[11px] font-black px-3 py-1 rounded-full border bg-purple-500/15 border-purple-400/40 text-purple-300">FULL MONTH</span>
+      <p class="relative mt-5 text-hosPurple font-black tracking-widest text-xs">FULL PLATFORM EXPERIENCE</p>
+      <h3 class="relative text-2xl font-black mt-2">MONTHLY CREATOR ACCESS</h3>
+
+      <div class="relative mt-6">
+        <div class="text-5xl font-black">$89.99</div>
+        <div class="mt-1 text-xs text-white/50 font-bold">30 day program</div>
+      </div>
+
+      <p class="relative mt-5 text-white/65">
+        Full Humano Systems onboarding experience with extended creator access, automation previews, platform guidance, and bonus ecosystem access.
+      </p>
+
+      <ul class="relative mt-6 space-y-3 text-sm text-white/75 flex-1">
+        <li>✔ Full creator onboarding</li>
+        <li>✔ Automation platform systems</li>
+        <li>✔ Digital ecosystem access</li>
+        <li>✔ Transition-era member access</li>
+        <li>✔ Creator growth framework</li>
+        <li>✔ BONUS TOC premium access</li>
+      </ul>
+
+      <div class="relative mt-6 grid gap-3">
+        <a href="https://buy.stripe.com/4gM00lgDl3RUfZ525sdnW06" target="_blank" class="w-full rounded-2xl px-5 py-4 font-black bg-hosPurple hover:bg-purple-400 text-white text-center">Pay with Card — $89.99</a>
+        <a href="https://www.paypal.com/ncp/payment/6A8S4YVSFB6CC" target="_blank" class="w-full rounded-2xl px-5 py-4 font-black bg-white/10 hover:bg-white/15 text-white border border-white/10 text-center">Pay with PayPal</a>
+        <p class="text-center text-xs text-white/40 font-bold">Educational digital package + bonus ecosystem access</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+```
+
   </main>
-
-  <footer class="border-t border-white/10 bg-black/30">
-    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-4 items-center justify-between text-sm text-white/50">
-      <div>© 2026 Human Operating System. All rights reserved.</div>
-      <div class="flex gap-5">
-        <a href="/terms.html" class="hover:text-white">Terms</a>
-        <a href="/privacy.html" class="hover:text-white">Privacy</a>
-        <a href="mailto:humanosystem@proton.me" class="hover:text-white">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    function startCountdown() {
-      const timer = document.getElementById("saleTimer");
-      if (!timer) return;
-
-      let seconds = 23 * 60 * 60 + 59 * 60 + 59;
-
-      setInterval(function () {
-        const h = Math.floor(seconds / 3600);
-        const m = Math.floor((seconds % 3600) / 60);
-        const s = seconds % 60;
-
-        timer.textContent = `Access window: ${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-        seconds = seconds > 0 ? seconds - 1 : 23 * 60 * 60 + 59 * 60 + 59;
-      }, 1000);
-    }
-
-    startCountdown();
-  </script>
 </body>
 </html>
